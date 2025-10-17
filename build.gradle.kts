@@ -1,7 +1,10 @@
+import com.github.gradle.node.npm.task.NpmTask
+
 plugins {
     java
     id("org.springframework.boot") version "3.5.6"
     id("io.spring.dependency-management") version "1.1.7"
+    id("com.github.node-gradle.node") version "7.1.0"
 }
 
 group = "de.tzerr"
@@ -35,4 +38,21 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.register<NpmTask>("clientInstall") {
+    description = "Installs NPM dependencies of the client"
+    workingDir = file("$projectDir/src/main/client")
+    args.set(listOf("install"))
+}
+
+tasks.register<NpmTask>("clientBuild") {
+    dependsOn("clientInstall")
+    description = "Build client app and deploy to spring boot app"
+    workingDir = file("$projectDir/src/main/client")
+    args.set(listOf("run", "build"))
+}
+
+tasks.compileJava {
+    dependsOn("clientBuild")
 }
