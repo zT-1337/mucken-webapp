@@ -11,4 +11,8 @@ export default defineConfig({
     }),
     react(),
   ],
+  build: {
+    outDir: "../resources/static/",
+    emptyOutDir: true,
+  },
 });
