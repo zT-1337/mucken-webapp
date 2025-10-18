@@ -1,4 +1,4 @@
-package de.tzerr.muckenwebapp.auth.configs;
+package de.tzerr.muckenwebapp.auth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

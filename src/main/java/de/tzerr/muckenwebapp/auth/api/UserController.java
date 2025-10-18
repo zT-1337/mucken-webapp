@@ -1,7 +1,7 @@
 package de.tzerr.muckenwebapp.auth.api;
 
-import de.tzerr.muckenwebapp.auth.models.User;
-import de.tzerr.muckenwebapp.auth.repositories.UserRepository;
+import de.tzerr.muckenwebapp.auth.model.User;
+import de.tzerr.muckenwebapp.auth.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;

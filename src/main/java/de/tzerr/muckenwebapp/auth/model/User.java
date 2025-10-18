@@ -1,4 +1,4 @@
-package de.tzerr.muckenwebapp.auth.models;
+package de.tzerr.muckenwebapp.auth.model;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
-package de.tzerr.muckenwebapp.auth.repositories;
+package de.tzerr.muckenwebapp.auth.repository;
 
-import de.tzerr.muckenwebapp.auth.models.User;
+import de.tzerr.muckenwebapp.auth.model.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
