@@ -1,5 +1,8 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
-import { MeProvider } from "@/api/MeProvider.tsx";
+import { createFileRoute, Navigate, Outlet } from "@tanstack/react-router";
+import { MeProvider } from "@/api/me.tsx";
+import React from "react";
+import { Spinner } from "@/components/ui/spinner.tsx";
+import { ErrorBoundary } from "react-error-boundary";
 
 export const Route = createFileRoute("/_auth")({
   component: AuthLayout,
@@ -7,8 +10,12 @@ export const Route = createFileRoute("/_auth")({
 
 function AuthLayout() {
   return (
-    <MeProvider>
-      <Outlet />
-    </MeProvider>
+    <ErrorBoundary fallback={<Navigate to={"/login"} />}>
+      <React.Suspense fallback={<Spinner />}>
+        <MeProvider>
+          <Outlet />
+        </MeProvider>
+      </React.Suspense>
+    </ErrorBoundary>
   );
 }
