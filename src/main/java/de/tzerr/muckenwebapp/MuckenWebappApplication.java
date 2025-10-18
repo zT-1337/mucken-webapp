@@ -3,6 +3,9 @@ package de.tzerr.muckenwebapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+//TODO: Logging Backend
+//TODO: Logging Core Lib
+
 @SpringBootApplication
 public class MuckenWebappApplication {
 
