@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //TODO: Logging Backend
 //TODO: Logging Core Lib
+//TODO: Persistent User Management
 
 @SpringBootApplication
 public class MuckenWebappApplication {
