@@ -4,6 +4,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 import prettier from "eslint-config-prettier/flat";
+import reactQuery from "@tanstack/eslint-plugin-query";
 import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
@@ -18,6 +19,7 @@ export default defineConfig([
       tseslint.configs.recommendedTypeChecked,
       tseslint.configs.strictTypeChecked,
       tseslint.configs.stylisticTypeChecked,
+      reactQuery.configs.recommended,
     ],
     languageOptions: {
       parserOptions: {
