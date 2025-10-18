@@ -12,7 +12,7 @@ export const Route = createFileRoute("/_auth")({
 function AuthLayout() {
   return (
     <ErrorBoundary fallback={<Navigate to={"/login"} />}>
-      <React.Suspense fallback={<Spinner className={"size-16"} />}>
+      <React.Suspense fallback={<Spinner className={"size-32 mx-auto p-4"} />}>
         <MeProvider>
           <QueryErrorResetBoundary>
             <Outlet />
