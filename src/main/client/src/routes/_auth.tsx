@@ -3,6 +3,7 @@ import { MeProvider } from "@/api/me.tsx";
 import React from "react";
 import { Spinner } from "@/components/ui/spinner.tsx";
 import { ErrorBoundary } from "react-error-boundary";
+import { QueryErrorResetBoundary } from "@tanstack/react-query";
 
 export const Route = createFileRoute("/_auth")({
   component: AuthLayout,
@@ -11,9 +12,11 @@ export const Route = createFileRoute("/_auth")({
 function AuthLayout() {
   return (
     <ErrorBoundary fallback={<Navigate to={"/login"} />}>
-      <React.Suspense fallback={<Spinner />}>
+      <React.Suspense fallback={<Spinner className={"size-16"} />}>
         <MeProvider>
-          <Outlet />
+          <QueryErrorResetBoundary>
+            <Outlet />
+          </QueryErrorResetBoundary>
         </MeProvider>
       </React.Suspense>
     </ErrorBoundary>
