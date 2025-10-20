@@ -10,7 +10,7 @@ function _authIndex() {
   return (
     <section className={"space-y-4"}>
       <h1 className={"text-4xl text-center"}>Auf einen Muck?</h1>
-      <MainMenuButton to={"/game/local/create"}>Local Game</MainMenuButton>
+      <MainMenuButton to={"/game/local"}>Local Game</MainMenuButton>
       <MainMenuButton to={"/profile"}>Profile</MainMenuButton>
       <MainMenuButton to={"/logout"}>Logout</MainMenuButton>
     </section>
