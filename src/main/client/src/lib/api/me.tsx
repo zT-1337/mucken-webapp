@@ -1,8 +1,8 @@
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import axios from "redaxios";
-import type { User } from "@/type/user.ts";
+import type { User } from "@/lib/type/user.ts";
 import * as React from "react";
-import { apiRoutes } from "@/api/api.routes.ts";
+import { apiRoutes } from "@/lib/api/api.routes.ts";
 
 const useMe = () => {
   return useSuspenseQuery(meQueryOptions);

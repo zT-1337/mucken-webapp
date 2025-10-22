@@ -1,5 +1,5 @@
 import { createFileRoute, Navigate, Outlet } from "@tanstack/react-router";
-import { MeProvider } from "@/api/me.tsx";
+import { MeProvider } from "@/lib/api/me.tsx";
 import React from "react";
 import { Spinner } from "@/components/ui/spinner.tsx";
 import { ErrorBoundary } from "react-error-boundary";
