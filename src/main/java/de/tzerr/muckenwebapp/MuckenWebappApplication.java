@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //TODO: Logging Core Lib
 //TODO: Persistent User Management
 //TODO: Implement Create Local Game
+//TODO: Persistance Layer
 
 @SpringBootApplication
 public class MuckenWebappApplication {
