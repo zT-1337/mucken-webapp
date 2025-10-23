@@ -1,4 +1,4 @@
-package de.tzerr.muckenwebapp.web.configuration;
+package de.tzerr.muckenwebapp.web.config;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.NonNull;
