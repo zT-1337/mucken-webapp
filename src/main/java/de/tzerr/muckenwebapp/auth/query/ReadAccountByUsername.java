@@ -2,6 +2,8 @@ package de.tzerr.muckenwebapp.auth.query;
 
 import de.tzerr.muckenwebapp.auth.model.Account;
 import de.tzerr.muckenwebapp.auth.repository.AccountRepository;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +16,11 @@ public class ReadAccountByUsername {
     this.accountRepository = accountRepository;
   }
 
-  public Account query(@NonNull Filter filter) throws AccountNotFound {
+  public Account query(@NonNull @Valid Filter filter) throws AccountNotFound {
     return accountRepository.findByUsername(filter.username)
       .orElseThrow(AccountNotFound::new);
   }
 
-  public record Filter(@NonNull String username) {
+  public record Filter(@NonNull @NotBlank String username) {
   }
 }
