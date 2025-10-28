@@ -2,7 +2,7 @@ package de.tzerr.muckenwebapp.game.api.event;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.tzerr.muckenwebapp.game.model.GameEvent;
+import de.tzerr.muckenwebapp.game.model.event.GameEvent;
 import lombok.RequiredArgsConstructor;
 
 @JsonTypeInfo(
