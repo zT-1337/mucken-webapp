@@ -13,6 +13,6 @@ public class ReadGameEventLog {
     throw new RuntimeException("Not implemented yet");
   }
 
-  public record Filter(@NonNull @NotBlank String gameId) {
+  public record Filter(@NotBlank String gameId) {
   }
 }

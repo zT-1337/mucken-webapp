@@ -2,6 +2,7 @@ package de.tzerr.muckenwebapp.game.api.event;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import de.tzerr.muckenwebapp.game.model.GameEvent;
 import lombok.RequiredArgsConstructor;
 
 @JsonTypeInfo(
@@ -22,4 +23,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public abstract class GameEventDto {
   private final int eventId;
+
+  public static GameEventDto from(GameEvent gameEvent) {
+    throw new RuntimeException("Not implemented yet");
+  }
 }
