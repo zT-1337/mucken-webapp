@@ -1,6 +1,6 @@
 package de.tzerr.muckenwebapp.auth.api;
 
-import de.tzerr.muckenwebapp.auth.repository.AccountRepository;
+import de.tzerr.muckenwebapp.auth.query.ReadAccountByUsername;
 import de.tzerr.muckenwebapp.auth.util.SecurityUtil;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/accounts")
 public class AccountController {
 
-  private final AccountRepository accountRepository;
+  private final ReadAccountByUsername readAccountByUsername;
 
-  public AccountController(AccountRepository accountRepository) {
-    this.accountRepository = accountRepository;
+  public AccountController(ReadAccountByUsername readAccountByUsername) {
+    this.readAccountByUsername = readAccountByUsername;
   }
 
   @GetMapping("read-me")
   public AccountDto readMe() {
-    var account = accountRepository
-      .findByUsername(SecurityUtil.getUsernameOfAuthenticatedUser())
-      .orElseThrow(AccountNotFound::new);
-
-    return AccountDto.from(account);
+    return AccountDto.from(
+      readAccountByUsername.query(
+        new ReadAccountByUsername.Filter(SecurityUtil.getUsernameOfAuthenticatedUser())
+      )
+    );
   }
 }
