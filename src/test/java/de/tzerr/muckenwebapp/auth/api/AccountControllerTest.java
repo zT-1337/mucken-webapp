@@ -36,16 +36,19 @@ class AccountControllerTest {
 
     this.mockMvc.perform(get("/api/v1/accounts/read-me"))
       .andExpect(status().isOk())
-      .andExpect(jsonPath("$.id").value(savedAccount.getId().toString()))
-      .andExpect(jsonPath("$.username").value(savedAccount.getUsername()))
-      .andExpect(jsonPath("$.email").value(savedAccount.getEmail()));
+      .andExpect(jsonPath("$.error").isEmpty())
+      .andExpect(jsonPath("$.ok.id").value(savedAccount.getId().toString()))
+      .andExpect(jsonPath("$.ok.username").value(savedAccount.getUsername()))
+      .andExpect(jsonPath("$.ok.email").value(savedAccount.getEmail()));
   }
 
   @Test
   @WithMockUser(username = "unknownUser")
   void shouldReturnNotFoundBecauseAuthenticatedUserIsNotInDatabase() throws Exception {
     this.mockMvc.perform(get("/api/v1/accounts/read-me"))
-      .andExpect(status().isNotFound());
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.error").value("AccountNotFound"))
+      .andExpect(jsonPath("$.ok").isEmpty());
   }
 
   @Test

@@ -2,6 +2,7 @@ package de.tzerr.muckenwebapp.auth.api;
 
 import de.tzerr.muckenwebapp.auth.query.ReadAccountByUsername;
 import de.tzerr.muckenwebapp.auth.util.SecurityUtil;
+import de.tzerr.muckenwebapp.util.ApiResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +18,11 @@ public class AccountController {
   }
 
   @GetMapping("read-me")
-  public AccountDto readMe() {
-    return AccountDto.from(
+  public ApiResult<AccountDto, String> readMe() {
+    return ApiResult.fromLambda(() -> AccountDto.from(
       readAccountByUsername.query(
         new ReadAccountByUsername.Filter(SecurityUtil.getUsernameOfAuthenticatedUser())
       )
-    );
+    ));
   }
 }

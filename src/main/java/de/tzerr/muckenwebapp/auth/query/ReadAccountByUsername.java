@@ -1,6 +1,5 @@
 package de.tzerr.muckenwebapp.auth.query;
 
-import de.tzerr.muckenwebapp.auth.api.AccountNotFound;
 import de.tzerr.muckenwebapp.auth.model.Account;
 import de.tzerr.muckenwebapp.auth.repository.AccountRepository;
 import lombok.NonNull;
@@ -15,7 +14,7 @@ public class ReadAccountByUsername {
     this.accountRepository = accountRepository;
   }
 
-  public Account query(@NonNull Filter filter) {
+  public Account query(@NonNull Filter filter) throws AccountNotFound {
     return accountRepository.findByUsername(filter.username)
       .orElseThrow(AccountNotFound::new);
   }

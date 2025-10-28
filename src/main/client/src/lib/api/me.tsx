@@ -1,8 +1,9 @@
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import axios from "redaxios";
-import type { User } from "@/lib/type/user.ts";
+import type { Account } from "@/lib/type/account.ts";
 import * as React from "react";
 import { apiRoutes } from "@/lib/api/api.routes.ts";
+import type { ApiResult } from "@/lib/type/util.ts";
 
 const useMe = () => {
   return useSuspenseQuery(meQueryOptions);
@@ -14,12 +15,12 @@ const meQueryOptions = queryOptions({
 });
 
 const fetchMe = async () => {
-  const user = await axios.get<User>(apiRoutes.me);
+  const user = await axios.get<ApiResult<Account, "AccountNotFound">>(apiRoutes.me);
   return user.data;
 };
 
 export type MeContext = {
-  me: User;
+  me: Account;
 };
 
 const MeContext = React.createContext<MeContext | null>(null);
@@ -27,7 +28,11 @@ const MeContext = React.createContext<MeContext | null>(null);
 export const MeProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { data } = useMe();
 
-  return <MeContext.Provider value={{ me: data }}>{children}</MeContext.Provider>;
+  if (!data.ok) {
+    throw new Error("User could not be authenticated");
+  }
+
+  return <MeContext.Provider value={{ me: data.ok }}>{children}</MeContext.Provider>;
 };
 
 export function useMeContext() {

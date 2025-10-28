@@ -64,5 +64,5 @@ tasks.register<NpmTask>("clientBuild") {
 }
 
 tasks.compileJava {
-    //dependsOn("clientBuild")
+    dependsOn("clientBuild")
 }

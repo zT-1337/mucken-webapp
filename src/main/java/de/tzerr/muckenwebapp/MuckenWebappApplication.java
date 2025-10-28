@@ -3,11 +3,9 @@ package de.tzerr.muckenwebapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+//TODO: Implement Create Local Game
 //TODO: Logging Backend
 //TODO: Logging Core Lib
-//TODO: Persistent User Management
-//TODO: Implement Create Local Game
-//TODO: Persistance Layer
 
 @SpringBootApplication
 public class MuckenWebappApplication {
