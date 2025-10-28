@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 class AccountControllerTest {
 
   @Autowired
@@ -44,7 +44,7 @@ class AccountControllerTest {
 
   @Test
   @WithMockUser(username = "unknownUser")
-  void shouldReturnNotFoundBecauseAuthenticatedUserIsNotInDatabase() throws Exception {
+  void shouldReturnErrorBecauseAuthenticatedUserIsNotInDatabase() throws Exception {
     this.mockMvc.perform(get("/api/v1/accounts/read-me"))
       .andExpect(status().isOk())
       .andExpect(jsonPath("$.error").value("AccountNotFound"))
